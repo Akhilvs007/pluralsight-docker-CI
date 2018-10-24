@@ -7,8 +7,12 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/node:7.10
-      
+      - image: centos:centos7
+      - run:
+        name: yum-update
+        command: 'yum -y update'
+        command: 'yum -y install epel-release'
+        command: 'yum -y install nodejs npm'
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
@@ -26,8 +30,19 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
           
-
+      - run:
+        command: 'cp . /src'
+          
+      - run:
+        command: 'cd /src'   
+        
+          
+    
       - run: npm install
+      
+       - expose:8080
+       - run:
+        command:'cd /src && node ./app.js'
 
       - save_cache:
           paths:
