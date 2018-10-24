@@ -29,9 +29,11 @@ jobs:
       - run: yum -y update
       - run: yum -y install epel-release
       - run: yum -y install nodejs npm
-      - run: ls -lrt
+      - run: ls -lrt 
+      - run: ls -lrt test/
       - run: cp -r . /src
       - run: cd /src; npm install
+      - run: npm
 
 
       - save_cache:
