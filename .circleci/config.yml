@@ -26,9 +26,8 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
           
-      - run: cp . /src
 
-      - run: cd /src; npm install
+      - run: npm install
 
       - save_cache:
           paths:
