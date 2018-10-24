@@ -13,7 +13,9 @@ jobs:
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
-
+      - run: yum -y update
+      - run: yum -y install epel-release
+      - run: yum -y install nodejs npm
     working_directory: ~/repo
 
     steps:
