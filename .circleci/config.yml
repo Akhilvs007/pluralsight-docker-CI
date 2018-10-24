@@ -29,6 +29,8 @@ jobs:
       - run: yum -y update
       - run: yum -y install epel-release
       - run: yum -y install nodejs npm
+      - run: cp . /src
+      - run: cd /src
 
       - run: npm install
 
