@@ -39,6 +39,5 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run tests!
-      test:
-        override:    
-          - mocha
+      - run: cd /src/test; npm test
+     
