@@ -34,8 +34,7 @@ jobs:
       - run: cp -r . /src
       - run: cd /src; npm install
       - run: ls -lrt
-      - run: npm
-
+  
 
       - save_cache:
           paths:
@@ -43,5 +42,5 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run tests!
-      - run: cd /src/test; npm test
+      - run: /src/test/npm test
      
