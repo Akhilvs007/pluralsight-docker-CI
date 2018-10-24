@@ -30,9 +30,8 @@ jobs:
       - run: yum -y install epel-release
       - run: yum -y install nodejs npm
       - run: cp -r . /src
-      - run: cd /src
+      - run: cd /src; npm install
 
-      - run: npm install
 
       - save_cache:
           paths:
