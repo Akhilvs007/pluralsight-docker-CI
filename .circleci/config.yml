@@ -32,7 +32,7 @@ jobs:
       - run: ls -lrt 
       - run: ls -lrt test/
       - run: cp -r . /src
-      - run: cd /src; pwd ;npm install
+      - run: cd /src; npm install
       - run: ls -lrt
   
 
