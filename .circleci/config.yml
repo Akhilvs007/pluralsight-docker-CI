@@ -30,7 +30,7 @@ jobs:
       - run: yum -y install epel-release
       - run: yum -y install nodejs npm
       - run: yum -y install docker
-      - run: systemctl start docker
+      - run: sudo systemctl start docker
       - run: ls -lrt 
       - run: ls -lrt test/
       - run: cp -r . /src
