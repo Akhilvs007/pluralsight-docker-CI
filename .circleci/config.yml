@@ -34,7 +34,9 @@ jobs:
       - run: cp -r . /src
       - run: cd /src; npm install
       - run: ls -lrt
-  
+      
+  expose:
+    - "8080"
 
       - save_cache:
           paths:
