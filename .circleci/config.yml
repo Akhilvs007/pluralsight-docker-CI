@@ -35,13 +35,10 @@ jobs:
       - run: cp -r . /src
       - run: cd /src; npm install
       - run: ls -lrt
-      - run: docker run -p 80:80/tcp
+      - run: docker build .
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-        
-      # run tests!
-      - run: cd /src/test/ && npm test
      
