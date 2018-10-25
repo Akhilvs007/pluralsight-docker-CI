@@ -7,14 +7,14 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: centos:centos7
+      - image: akhilvs007/pluralsight-docker-ci:pluralsight-docker-ci
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
 
-    working_directory: ~/repo
+    working_directory: ~/src
 
     steps:
       - checkout
@@ -25,21 +25,14 @@ jobs:
           - v1-dependencies-{{ checksum "package.json" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
-          
-      - run: yum -y update
-      - run: yum -y install epel-release
-      - run: yum -y install nodejs npm
-      - run: yum -y install docker
-      - run: service docker start
-      - run: ls -lrt 
-      - run: ls -lrt test/
-      - run: cp -r . /src
-      - run: cd /src; npm install
-      - run: ls -lrt
-      - run: docker build .
+
+      - run: npm install
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+        
+      # run tests!
+      - run: npm test
      
