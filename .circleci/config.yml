@@ -34,9 +34,7 @@ jobs:
       - run: cp -r . /src
       - run: cd /src; npm install
       - run: ls -lrt
-      
-  expose:
-    - "8080"
+      - run: docker run -p 80:80/tcp
 
       - save_cache:
           paths:
@@ -44,5 +42,5 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run tests!
-      - run: cd /src/test/; npm test
+      - run: cd /src/test/ && npm test
      
